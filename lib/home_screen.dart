@@ -1,3 +1,4 @@
+import 'package:flash_news/utilities/data.dart';
 import 'package:flash_news/utilities/my_app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var w = MediaQuery.of(context).size.width.round();
+    var h = MediaQuery.of(context).size.height.round();
+    print('our screen ($w, $h)');
+
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -21,79 +26,36 @@ class HomeScreen extends StatelessWidget {
                 onPressed: () {}, icon: Icon(Icons.search), color: Colors.grey)
           ],
         ),
-        body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-            Container(
-              margin: EdgeInsets.only(left: 40),
-              height: 200,
-              width: 180,
-              decoration: BoxDecoration(
-                  color: MyAppColors.mainColorLight,
-                  borderRadius: BorderRadius.circular(10.0),
-                  image: DecorationImage(
-                      image: AssetImage('assets/image/cake.jpg'),
-                      fit: BoxFit.cover)),
-              child: Text(
-                'Sports',
-                style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: MyAppColors.appWhite),
-              ),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(left: 40),
-                  height: 200,
-                  width: 180,
-                  decoration: BoxDecoration(
-                      color: MyAppColors.mainColorLight,
-                      borderRadius: BorderRadius.circular(10.0),
-                      image: DecorationImage(
-                          image: AssetImage('assets/image/cake.jpg'),
-                          fit: BoxFit.cover)),
-                  child: Text(
-                    'Sports',
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: MyAppColors.appWhite),
-                  ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(left: 40),
-                      height: 200,
-                      width: 180,
-                      decoration: BoxDecoration(
-                          color: MyAppColors.mainColorLight,
-                          borderRadius: BorderRadius.circular(10.0),
-                          image: DecorationImage(
-                              image: AssetImage('assets/image/cake.jpg'),
-                              fit: BoxFit.cover)),
-                      child: Text(
-                        'Sports',
+        body: SingleChildScrollView(
+          child: Container(
+              margin: EdgeInsets.symmetric(
+                  horizontal: h * 0.01, vertical: h * 0.01),
+              child: GridView.count(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                crossAxisCount: 3,
+                crossAxisSpacing: h * 0.006,
+                mainAxisSpacing: h * 0.0075,
+                childAspectRatio: h / h * 0.7,
+                children: List.generate(homedata.length, (index) {
+                  return Container(
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                            image: AssetImage(homedata[index]['photo']),
+                            colorFilter: ColorFilter.mode(
+                                Colors.black.withOpacity(0.35),
+                                BlendMode.darken),
+                            fit: BoxFit.cover)),
+                    child: Text(homedata[index]['title'],
                         style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: MyAppColors.appWhite),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            )
-          ])
-        ]));
+                            fontSize: 20,
+                            color: MyAppColors.appWhite,
+                            fontWeight: FontWeight.bold)),
+                  );
+                }),
+              )),
+        ));
   }
 }

@@ -1,5 +1,10 @@
 import 'package:flash_news/home_screen.dart';
+import 'package:flash_news/screens/auth/sign_in.dart';
+import 'package:flash_news/screens/auth/sign_up.dart';
+import 'package:flash_news/screens/news/economy/economy_news.dart';
 import 'package:flutter/material.dart';
+
+import 'screens/news/general/general_newslist.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,38 +17,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme:
-          ThemeData(primarySwatch: Colors.blue, fontFamily: 'Times New Roman'),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter + 5;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flash',
-      home: HomeScreen(),
+      title: 'flash',
+      home: const SignUp(),
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+      ),
     );
   }
 }

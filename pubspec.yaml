@@ -34,10 +34,22 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  firebase_core: ^2.1.0
+  get: ^4.6.5
+  cloud_firestore: ^4.0.2
+  firebase_auth: ^4.0.2
+  firebase_storage: ^11.0.2
+  introduction_screen: ^3.0.2
+  http: ^0.13.5
+  json_annotation: ^4.7.0
+  dependencies:
+  json_serializable: ^6.5.4
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: ^2.3.3
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -73,11 +85,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  fonts:
+    - family: Poppins
+      fonts:
+        # - asset: assets/font/Poppins-Light.ttf
+        - asset: assets/font/Poppins-Regular.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

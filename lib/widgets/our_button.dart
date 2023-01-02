@@ -32,7 +32,7 @@ class OurButton extends StatelessWidget {
         color: iWantGradient ? null : color ?? Colors.teal,
         borderRadius: BorderRadius.circular(radius),
         gradient: iWantGradient
-            ? LinearGradient(
+            ? const LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
                 colors: [

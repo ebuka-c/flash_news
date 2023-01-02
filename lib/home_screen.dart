@@ -1,9 +1,12 @@
 import 'package:flash_news/utilities/data.dart';
 import 'package:flash_news/utilities/my_app_colors.dart';
 import 'package:flutter/material.dart';
+import '../../utilities/data.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  static String routeName = '/home-screen';
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'News Category',
             style: TextStyle(
               color: MyAppColors.mainColor,
@@ -37,19 +40,19 @@ class HomeScreen extends StatelessWidget {
                 crossAxisSpacing: h * 0.006,
                 mainAxisSpacing: h * 0.0075,
                 childAspectRatio: h / h * 0.7,
-                children: List.generate(homedata.length, (index) {
+                children: List.generate(homeData.length, (index) {
                   return Container(
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
-                            image: AssetImage(homedata[index]['photo']),
+                            image: AssetImage(homeData[index]['photo']),
                             colorFilter: ColorFilter.mode(
                                 Colors.black.withOpacity(0.35),
                                 BlendMode.darken),
                             fit: BoxFit.cover)),
-                    child: Text(homedata[index]['title'],
-                        style: TextStyle(
+                    child: Text(homeData[index]['title'],
+                        style: const TextStyle(
                             fontSize: 20,
                             color: MyAppColors.appWhite,
                             fontWeight: FontWeight.bold)),

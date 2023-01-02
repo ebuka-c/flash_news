@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>693116836886-dj0ogl9di22hu2fivgphcp94oerts7hl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.693116836886-dj0ogl9di22hu2fivgphcp94oerts7hl</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC7NflyvD2XF2vpJaWkBiLYN4U_tV7DxEU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>693116836886</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.flashNews</string>
+	<key>PROJECT_ID</key>
+	<string>flash-news-b4e80</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flash-news-b4e80.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:693116836886:ios:17bb0ef1fe2779c0672937</string>
+</dict>
+</plist>

@@ -1,10 +1,20 @@
+import 'package:flash_news/screens/auth/sign_up.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../controllers/auth_controller.dart';
 import '../../utilities/my_app_colors.dart';
 import '../../widgets/our_button.dart';
 
 class SignInScreen extends StatelessWidget {
-  const SignInScreen({Key? key}) : super(key: key);
+  SignInScreen({Key? key}) : super(key: key);
+
+  static String routeName = '/sign-in';
+
+  Authcontroller authController = Get.find<Authcontroller>();
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,56 +54,55 @@ class SignInScreen extends StatelessWidget {
             // Input Fields
             Column(
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: h * 0.03),
-                  child: Column(
-                    children: [
-                      // Email
-                      Material(
-                        elevation: 3,
-                        borderRadius: BorderRadius.circular(h * 0.05),
-                        child: TextField(
-                          // controller: pass in your controller,
-                          autocorrect: true,
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(h * 0.023),
-                            prefixIcon: Icon(
-                              Icons.email,
-                              color: MyAppColors.mainColor,
-                            ),
-                            hintText: 'Email',
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: h * 0.03),
-                      // Password
-                      Material(
-                        elevation: 3,
-                        borderRadius: BorderRadius.circular(h * 0.05),
-                        child: Container(
-                          // height: 60,
-                          child: TextField(
-                            // controller: pass in your controller,
+                Form(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: h * 0.03),
+                    child: Column(
+                      children: [
+                        // Email
+                        Material(
+                          elevation: 3,
+                          borderRadius: BorderRadius.circular(h * 0.05),
+                          child: TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            controller: emailController,
                             autocorrect: true,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.all(h * 0.023),
-                              prefixIcon: Icon(
-                                Icons.lock,
+                              prefixIcon: const Icon(
+                                Icons.email,
                                 color: MyAppColors.mainColor,
                               ),
-                              hintText: 'Password',
+                              hintText: 'Email',
                               border: InputBorder.none,
-                              // contentPadding: EdgeInsets.all( 59),
-                              // constraints: BoxConstraints(
-                              //   maxWidth: 300,
-                              //   minHeight: 100,
-                              // ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                        SizedBox(height: h * 0.03),
+                        // Password
+                        Material(
+                          elevation: 3,
+                          borderRadius: BorderRadius.circular(h * 0.05),
+                          child: Container(
+                            // height: 60,
+                            child: TextFormField(
+                              controller: passwordController,
+                              obscureText: true,
+                              autocorrect: true,
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.all(h * 0.023),
+                                prefixIcon: const Icon(
+                                  Icons.lock,
+                                  color: MyAppColors.mainColor,
+                                ),
+                                hintText: 'Password',
+                                border: InputBorder.none,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: h * 0.01),
@@ -116,24 +125,37 @@ class SignInScreen extends StatelessWidget {
                 ),
                 SizedBox(height: h * 0.01),
                 //Login Button
-                OurButton(
-                  text: 'LOGIN',
-                  height: h * 0.08,
-                  width: w - 100,
-                  radius: h * 0.05,
-                  fontSize: h * 0.03,
+                GestureDetector(
+                  onTap: () {
+                    String email = emailController.text.trim();
+                    String pswd = passwordController.text.trim();
+
+                    if (authController.validateSignIn(email, pswd)) {
+                      authController.loginUser(email, pswd);
+                    }
+                  },
+                  child: OurButton(
+                    text: 'LOGIN',
+                    height: h * 0.08,
+                    width: w - 100,
+                    radius: h * 0.05,
+                    fontSize: h * 0.03,
+                  ),
                 ),
                 // CTA texts: signup, don't have account?
                 SizedBox(height: h * 0.01),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "Don't have an Account?",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     TextButton(
-                      onPressed: () {},
-                      child: Text(
+                      onPressed: () => Get.toNamed(SignUpScreen.routeName),
+                      child: const Text(
                         'Register',
                         style: TextStyle(
                           color: MyAppColors.mainColor,

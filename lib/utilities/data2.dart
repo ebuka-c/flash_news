@@ -7,14 +7,14 @@ List<Map> screenData = [
   },
   {
     'image': 'assets/image/art.jpg',
-    'text':
-        'Only Communal Politics..:indore BJPOnly Communal Politics..:indore BJPOnly Communal Politics..:indore BJPOnly Communal Politics..:indore BJPOnly Communal Politics..:indore BJP',
+    'text': 'Only Communal Politics..:indore BJP',
     'text2': 'Leader Quits Over Citizenship law-NDTV',
     'text3': ''
   },
   {
     'image': 'assets/image/music.jpg',
-    'text': 'When even a rich city like Mumbai is starved',
+    'text':
+        'When even a rich city like Mumbai is starved When even a rich city like Mumbai is starved When even a rich city like Mumbai is starved When even a rich city like Mumbai is starved',
     'text2': 'of funds-Economic Times',
     'text3': ''
   },
@@ -31,14 +31,9 @@ List<Map> screenData = [
     'text3': 'today'
   },
   {
-    'image': 'assets/image/art.jpg',
+    'image': 'assets/image/music.jpg',
     'text': 'Boeings 2nd starliner software glitch could',
     'text2': 'have led to an in-space collision-space.com',
     'text3': ''
   },
-];
-List container = [
-  {'tittle': '638k', 'text': 'following'},
-  {'tittle': '1.9m', 'text': 'followers'},
-  {'tittle': '3.3m', 'text': 'likes'}
 ];

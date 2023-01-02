@@ -1,10 +1,22 @@
+import 'package:flash_news/screens/auth/sign_in.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../controllers/auth_controller.dart';
 import '../../utilities/my_app_colors.dart';
 import '../../widgets/our_button.dart';
 
-class SignUp extends StatelessWidget {
-  const SignUp({Key? key}) : super(key: key);
+class SignUpScreen extends StatelessWidget {
+  SignUpScreen({Key? key}) : super(key: key);
+
+  static String routeName = '/sign-up';
+
+  Authcontroller authController = Get.find<Authcontroller>();
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +35,13 @@ class SignUp extends StatelessWidget {
                 Opacity(
                   opacity: 0.05,
                   child: ShaderMask(
-                      child: Image(
+                      child: const Image(
                         image: AssetImage(
                           'assets/image/logo.png',
                         ),
                       ),
                       shaderCallback: (Rect bounds) {
-                        return LinearGradient(colors: [
+                        return const LinearGradient(colors: [
                           Colors.black,
                           MyAppColors.mainColorLight,
                         ]).createShader(bounds);
@@ -38,7 +50,7 @@ class SignUp extends StatelessWidget {
               ],
             ),
             Container(
-              margin: EdgeInsets.only(top: 90),
+              margin: const EdgeInsets.only(top: 90),
               child: Column(
                 children: [
                   ShaderMask(
@@ -47,7 +59,7 @@ class SignUp extends StatelessWidget {
                         width: w * 0.29,
                       ),
                       shaderCallback: (Rect bounds) {
-                        return LinearGradient(colors: [
+                        return const LinearGradient(colors: [
                           MyAppColors.mainColor,
                           MyAppColors.mainColorLight,
                         ]).createShader(bounds);
@@ -63,15 +75,17 @@ class SignUp extends StatelessWidget {
                       shadowColor: Colors.black,
                       child: TextField(
                         autocorrect: true,
+                        controller: emailController,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(h * 0.023),
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.email,
                             color: MyAppColors.mainColor,
                           ),
                           hintText: 'Email',
                           border: InputBorder.none,
                         ),
+                        keyboardType: TextInputType.emailAddress,
                       ),
                     ),
                   ),
@@ -86,10 +100,11 @@ class SignUp extends StatelessWidget {
                       shadowColor: Colors.black,
                       child: TextField(
                         autocorrect: true,
+                        controller: usernameController,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(h * 0.023),
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.person,
                             color: MyAppColors.mainColor,
                           ),
@@ -110,10 +125,12 @@ class SignUp extends StatelessWidget {
                       shadowColor: Colors.black,
                       child: TextField(
                         autocorrect: true,
+                        controller: passwordController,
+                        obscureText: true,
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(h * 0.023),
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.lock,
                             color: MyAppColors.mainColor,
                           ),
@@ -134,10 +151,12 @@ class SignUp extends StatelessWidget {
                       shadowColor: Colors.black,
                       child: TextField(
                         autocorrect: true,
+                        controller: confirmPasswordController,
+                        obscureText: true,
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(h * 0.023),
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.lock,
                             color: MyAppColors.mainColor,
                           ),
@@ -151,12 +170,26 @@ class SignUp extends StatelessWidget {
                     height: h * 0.06,
                   ),
                   //Sign Up Button
-                  OurButton(
-                    text: 'SignUp',
-                    height: h * 0.08,
-                    width: w - 100,
-                    radius: h * 0.05,
-                    fontSize: h * 0.03,
+                  GestureDetector(
+                    onTap: () {
+                      var email = emailController.text.trim();
+                      var pswd = passwordController.text.trim();
+                      var pswd2 = confirmPasswordController.text.trim();
+                      var username = usernameController.text.trim();
+
+                      //calling functions from auth controller
+                      if (authController.validateSignUp(
+                          email, pswd, pswd2, username)) {
+                        authController.registerUser(email, pswd, username);
+                      }
+                    },
+                    child: OurButton(
+                      text: 'SignUp',
+                      height: h * 0.08,
+                      width: w - 100,
+                      radius: h * 0.05,
+                      fontSize: h * 0.03,
+                    ),
                   ),
                   SizedBox(
                     height: h * 0.02,
@@ -169,7 +202,7 @@ class SignUp extends StatelessWidget {
                         style: TextStyle(fontSize: h * 0.02),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () => Get.toNamed(SignInScreen.routeName),
                         child: Text(
                           'Login',
                           style: TextStyle(

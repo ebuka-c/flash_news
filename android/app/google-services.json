@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "693116836886",
+    "project_id": "flash-news-b4e80",
+    "storage_bucket": "flash-news-b4e80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693116836886:android:494252b3ba79b439672937",
+        "android_client_info": {
+          "package_name": "com.example.flash_news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693116836886-mgguvd61nih0hudg0fr398nfneuj0n91.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6dFfGYZQ854joXOmw6NL6TtGl05gBeCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "693116836886-mgguvd61nih0hudg0fr398nfneuj0n91.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

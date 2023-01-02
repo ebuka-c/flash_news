@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Get.to(ProfileScreen());
+              Get.to(() => ProfileScreen());
             },
             icon: Icon(
               Icons.search,
@@ -65,30 +65,30 @@ class HomeScreen extends StatelessWidget {
               return InkWell(
                 onTap: () {
                   if (index == 0) {
-                    Get.to(TechNewsListScreen());
+                    Get.to(() => TechNewsListScreen());
                     // add screen
                   } else if (index == 1) {
-                    Get.to(EconomyNewsListScreen());
+                    Get.to(() => EconomyNewsListScreen());
                     // add screen
                   } else if (index == 2) {
-                    Get.to(SportsNewsListScreen());
+                    Get.to(() => SportsNewsListScreen());
                     //add screen
                   } else if (index == 3) {
-                    Get.to(HealthNewsList());
+                    Get.to(() => HealthNewsList());
                     //add screen
                   } else if (index == 4) {
-                    Get.to(FunNewsListScreen());
+                    Get.to(() => FunNewsListScreen());
                     //add screen
                   } else if (index == 5) {
-                    Get.to(ScienceNewsListScreen());
+                    Get.to(() => ScienceNewsListScreen());
                     //add screen
                   } else if (index == 6) {
-                    Get.to(GeneralNewsList());
+                    Get.to(() => GeneralNewsList());
                   } else if (index == 7) {
-                    Get.to(MusicNewsListScreen());
+                    Get.to(() => MusicNewsListScreen());
                     //add screen
                   } else if (index == 8) {
-                    Get.to(ArtNewsListScreen());
+                    Get.to(() => ArtNewsListScreen());
                     //add screen
                   }
                 },

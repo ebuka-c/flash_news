@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import '../models/news_model.dart';
 
-class NewsController extends GetxController {
+class GeneralNewsController extends GetxController {
   // list for all general news
   final generalNewsList = <Articles>[].obs;
 

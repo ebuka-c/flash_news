@@ -31,11 +31,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       // debugShowCheckedModeBanner: false,
       title: 'flash',
-      home: HomeScreen(),
+      // home: HomeScreen(),
       theme: ThemeData(
         fontFamily: 'Poppins',
       ),
-      // getPages: Routes.flashRoutes,
+      getPages: Routes.flashRoutes,
+      initialRoute: SignInScreen.routeName,
     );
   }
 }

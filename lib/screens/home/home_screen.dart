@@ -41,11 +41,11 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Get.to(() => ProfileScreen());
+              // Get.to(() => ProfileScreen());
             },
             icon: Icon(
               Icons.search,
-              color: MyAppColors.mainGreyColor,
+              color: Color.fromARGB(67, 8, 8, 8),
             ),
           ),
         ],
@@ -60,12 +60,14 @@ class HomeScreen extends StatelessWidget {
             crossAxisCount: 3,
             crossAxisSpacing: h * 0.006,
             mainAxisSpacing: h * 0.0075,
-            childAspectRatio: h / h * 0.6,
+            childAspectRatio: h / h * 0.63,
             children: List.generate(homeData.length, (index) {
               return InkWell(
                 onTap: () {
                   if (index == 0) {
-                    Get.to(() => TechNewsListScreen());
+                    Get.to(
+                      () => TechNewsListScreen(),
+                    );
                     // add screen
                   } else if (index == 1) {
                     Get.to(() => EconomyNewsListScreen());
@@ -74,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                     Get.to(() => SportsNewsListScreen());
                     //add screen
                   } else if (index == 3) {
-                    Get.to(() => HealthNewsList());
+                    Get.to(() => HealthNewsListScreen());
                     //add screen
                   } else if (index == 4) {
                     Get.to(() => FunNewsListScreen());
@@ -83,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                     Get.to(() => ScienceNewsListScreen());
                     //add screen
                   } else if (index == 6) {
-                    Get.to(() => GeneralNewsList());
+                    Get.to(() => GeneralNewsListScreen());
                   } else if (index == 7) {
                     Get.to(() => MusicNewsListScreen());
                     //add screen
@@ -106,7 +108,7 @@ class HomeScreen extends StatelessWidget {
                   child: Text(
                     homeData[index]['title'],
                     style: TextStyle(
-                      fontSize: h * 0.035,
+                      fontSize: h * 0.032,
                       fontWeight: FontWeight.bold,
                       color: MyAppColors.appWhite,
                     ),

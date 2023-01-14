@@ -16,62 +16,17 @@ import '../screens/home/home_screen.dart';
 
 class Routes {
   // List of our pages
+  static String home = '/';
+  static String signin = '/signin';
+  static String signup = '/signup';
+
+  static String getHomeRoute() => home;
+  static String getSignInRoute() => signin;
+  static String getSignUpRoute() => signup;
+
   static List<GetPage> flashRoutes = [
-    // homes screen
-    GetPage(
-      name: HomeScreen.routeName,
-      page: () => const HomeScreen(),
-    ),
-
-    // signIn screen
-    GetPage(
-      name: SignInScreen.routeName,
-      page: () => SignInScreen(),
-    ),
-
-    // SignUp screen
-    GetPage(
-      name: SignUpScreen.routeName,
-      page: () => SignUpScreen(),
-    ),
-
-    GetPage(
-      name: TechNewsListScreen.routeName,
-      page: () => TechNewsListScreen(),
-    ),
-
-    GetPage(
-      name: EconomyNewsListScreen.routeName,
-      page: () => EconomyNewsListScreen(),
-    ),
-    GetPage(
-      name: SportsNewsListScreen.routeName,
-      page: () => SportsNewsListScreen(),
-    ),
-    GetPage(
-      name: HealthNewsList.routeName,
-      page: () => HealthNewsList(),
-    ),
-    GetPage(
-      name: FunNewsListScreen.routeName,
-      page: () => FunNewsListScreen(),
-    ),
-
-    GetPage(
-      name: ScienceNewsListScreen.routeName,
-      page: () => ScienceNewsListScreen(),
-    ),
-    GetPage(
-      name: GeneralNewsList.routeName,
-      page: () => GeneralNewsList(),
-    ),
-    GetPage(
-      name: MusicNewsListScreen.routeName,
-      page: () => MusicNewsListScreen(),
-    ),
-    GetPage(
-      name: ArtNewsListScreen.routeName,
-      page: () => ArtNewsListScreen(),
-    ),
+    GetPage(name: home, page: () => HomeScreen()),
+    GetPage(name: signin, page: () => SignInScreen()),
+    GetPage(name: signup, page: () => SignUpScreen()),
   ];
 }

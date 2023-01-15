@@ -1,15 +1,19 @@
 import 'package:flash_news/controllers/generalnews_controller.dart';
+import 'package:flash_news/controllers/healthnews_controller.dart';
+import 'package:flash_news/controllers/healthnews_controller.dart';
+import 'package:flash_news/screens/news/economy/economy_news_details.dart';
+import 'package:flash_news/screens/news/health/health_newsdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../../../controllers/econews_controller.dart';
+import '../../../controllers/healthnews_controller.dart';
 import '../../../widgets/news_list_widget.dart';
 import '../../../widgets/our_button.dart';
-import 'economy_news_details.dart';
 
 class EconomyNewsListScreen extends StatelessWidget {
   EconomyNewsListScreen({Key? key}) : super(key: key);
 
-  GeneralNewsController newsController = Get.find<GeneralNewsController>();
+  EconomyNewsController EconomyNewsList = Get.find<EconomyNewsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +23,17 @@ class EconomyNewsListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Obx(() {
-        return newsController.stillFetching.value
+        return EconomyNewsList.stillFeatching.value
             ? const Center(child: CircularProgressIndicator())
             : NewsListWidget(
-                appBarTitleText: 'General News',
-                titleText: newsController.generalNewsList[0]
+                appBarTitleText: 'Economy News',
+                titleText: EconomyNewsList.EconomyNewsList[0]
                     .title!, //"The world's higest paid footballers and managers in 2020 have been named-GIVEMESPORT",
-                headerImage: newsController.generalNewsList[0]
+                headerImage: EconomyNewsList.EconomyNewsList[0]
                     .urlToImage!, //'assets/images/economy.jpg',
                 sliverDelegate: SliverChildBuilderDelegate(
                   ((context, index) {
-                    var generalNews = newsController.generalNewsList[index];
+                    var generalNews = EconomyNewsList.EconomyNewsList[index];
 
                     return Column(
                       children: [
@@ -87,7 +91,7 @@ class EconomyNewsListScreen extends StatelessWidget {
                                             child: Row(
                                               children: [
                                                 OurButton(
-                                                  text: 'GENERAL',
+                                                  text: 'ECONOMY',
                                                   height: h * 0.047,
                                                   width: w * 0.3,
                                                   radius: h * 0.009,
@@ -100,7 +104,8 @@ class EconomyNewsListScreen extends StatelessWidget {
                                                   generalNews
                                                       .publishedAt!, //'08 February',
                                                   style: TextStyle(
-                                                      color: Colors.grey),
+                                                      color: Colors.grey,
+                                                      fontSize: h * 0.017),
                                                 )
                                               ],
                                             ),
@@ -119,7 +124,7 @@ class EconomyNewsListScreen extends StatelessWidget {
                       ],
                     );
                   }),
-                  childCount: newsController.generalNewsList.length,
+                  childCount: EconomyNewsList.EconomyNewsList.length,
                 ),
               );
       }),

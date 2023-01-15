@@ -1,16 +1,17 @@
 import 'package:flash_news/controllers/generalnews_controller.dart';
+import 'package:flash_news/controllers/healthnews_controller.dart';
+import 'package:flash_news/controllers/healthnews_controller.dart';
+import 'package:flash_news/screens/news/health/health_newsdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../controllers/healthnews_controller.dart';
 import '../../../widgets/news_list_widget.dart';
 import '../../../widgets/our_button.dart';
-import 'health_newsdetails.dart';
 
 class HealthNewsListScreen extends StatelessWidget {
   HealthNewsListScreen({Key? key}) : super(key: key);
 
-  HealthNewsController newsController = Get.find<HealthNewsController>();
+  HealthNewsController HealthNewsList = Get.find<HealthNewsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +21,17 @@ class HealthNewsListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Obx(() {
-        return newsController.stillFetching.value
+        return HealthNewsList.stillFeatching.value
             ? const Center(child: CircularProgressIndicator())
             : NewsListWidget(
-                appBarTitleText: 'General News',
-                titleText: newsController.healthNewsList[0]
+                appBarTitleText: 'Health News',
+                titleText: HealthNewsList.HealthNewsList[0]
                     .title!, //"The world's higest paid footballers and managers in 2020 have been named-GIVEMESPORT",
-                headerImage: newsController.healthNewsList[0]
+                headerImage: HealthNewsList.HealthNewsList[0]
                     .urlToImage!, //'assets/images/economy.jpg',
                 sliverDelegate: SliverChildBuilderDelegate(
                   ((context, index) {
-                    var generalNews = newsController.healthNewsList[index];
+                    var generalNews = HealthNewsList.HealthNewsList[index];
 
                     return Column(
                       children: [
@@ -88,7 +89,7 @@ class HealthNewsListScreen extends StatelessWidget {
                                             child: Row(
                                               children: [
                                                 OurButton(
-                                                  text: 'GENERAL',
+                                                  text: 'HEALTH',
                                                   height: h * 0.047,
                                                   width: w * 0.3,
                                                   radius: h * 0.009,
@@ -101,7 +102,8 @@ class HealthNewsListScreen extends StatelessWidget {
                                                   generalNews
                                                       .publishedAt!, //'08 February',
                                                   style: TextStyle(
-                                                      color: Colors.grey),
+                                                      color: Colors.grey,
+                                                      fontSize: h * 0.017),
                                                 )
                                               ],
                                             ),
@@ -120,7 +122,7 @@ class HealthNewsListScreen extends StatelessWidget {
                       ],
                     );
                   }),
-                  childCount: newsController.healthNewsList.length,
+                  childCount: HealthNewsList.HealthNewsList.length,
                 ),
               );
       }),

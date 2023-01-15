@@ -10,7 +10,7 @@ import '../../../widgets/our_button.dart';
 class ScienceNewsListScreen extends StatelessWidget {
   ScienceNewsListScreen({Key? key}) : super(key: key);
 
-  ScienceNewsController newsController = Get.find<ScienceNewsController>();
+  ScienceNewsController ScienceController = Get.find<ScienceNewsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +20,17 @@ class ScienceNewsListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Obx(() {
-        return newsController.stillFetching.value
+        return ScienceController.stillFeatching.value
             ? const Center(child: CircularProgressIndicator())
             : NewsListWidget(
-                appBarTitleText: 'General News',
-                titleText: newsController.scienceNewsList[0]
+                appBarTitleText: 'Science News',
+                titleText: ScienceController.ScienceNewsList[0]
                     .title!, //"The world's higest paid footballers and managers in 2020 have been named-GIVEMESPORT",
-                headerImage: newsController.scienceNewsList[0]
+                headerImage: ScienceController.ScienceNewsList[0]
                     .urlToImage!, //'assets/images/economy.jpg',
                 sliverDelegate: SliverChildBuilderDelegate(
                   ((context, index) {
-                    var generalNews = newsController.scienceNewsList[index];
+                    var generalNews = ScienceController.ScienceNewsList[index];
 
                     return Column(
                       children: [
@@ -88,7 +88,7 @@ class ScienceNewsListScreen extends StatelessWidget {
                                             child: Row(
                                               children: [
                                                 OurButton(
-                                                  text: 'GENERAL',
+                                                  text: 'SCIENCE',
                                                   height: h * 0.047,
                                                   width: w * 0.3,
                                                   radius: h * 0.009,
@@ -101,7 +101,8 @@ class ScienceNewsListScreen extends StatelessWidget {
                                                   generalNews
                                                       .publishedAt!, //'08 February',
                                                   style: TextStyle(
-                                                      color: Colors.grey),
+                                                      color: Colors.grey,
+                                                      fontSize: h * 0.017),
                                                 )
                                               ],
                                             ),
@@ -120,7 +121,7 @@ class ScienceNewsListScreen extends StatelessWidget {
                       ],
                     );
                   }),
-                  childCount: newsController.scienceNewsList.length,
+                  childCount: ScienceController.ScienceNewsList.length,
                 ),
               );
       }),

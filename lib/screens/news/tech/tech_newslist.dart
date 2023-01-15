@@ -1,3 +1,4 @@
+import 'package:flash_news/controllers/generalnews_controller.dart';
 import 'package:flash_news/screens/news/tech/tech_newsdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,7 +10,7 @@ import '../../../widgets/our_button.dart';
 class TechNewsListScreen extends StatelessWidget {
   TechNewsListScreen({Key? key}) : super(key: key);
 
-  TechNewsController newsController = Get.find<TechNewsController>();
+  TechNewsController TechController = Get.find<TechNewsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +20,17 @@ class TechNewsListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Obx(() {
-        return newsController.stillFetching.value
+        return TechController.stillFeatching.value
             ? const Center(child: CircularProgressIndicator())
             : NewsListWidget(
-                appBarTitleText: 'General News',
-                titleText: newsController.techNewsList[0]
+                appBarTitleText: 'Tech News',
+                titleText: TechController.TechNewsList[0]
                     .title!, //"The world's higest paid footballers and managers in 2020 have been named-GIVEMESPORT",
-                headerImage: newsController
-                    .techNewsList[0].urlToImage!, //'assets/images/economy.jpg',
+                headerImage: TechController
+                    .TechNewsList[0].urlToImage!, //'assets/images/economy.jpg',
                 sliverDelegate: SliverChildBuilderDelegate(
                   ((context, index) {
-                    var generalNews = newsController.techNewsList[index];
+                    var generalNews = TechController.TechNewsList[index];
 
                     return Column(
                       children: [
@@ -87,7 +88,7 @@ class TechNewsListScreen extends StatelessWidget {
                                             child: Row(
                                               children: [
                                                 OurButton(
-                                                  text: 'GENERAL',
+                                                  text: 'TECH',
                                                   height: h * 0.047,
                                                   width: w * 0.3,
                                                   radius: h * 0.009,
@@ -100,7 +101,8 @@ class TechNewsListScreen extends StatelessWidget {
                                                   generalNews
                                                       .publishedAt!, //'08 February',
                                                   style: TextStyle(
-                                                      color: Colors.grey),
+                                                      color: Colors.grey,
+                                                      fontSize: h * 0.017),
                                                 )
                                               ],
                                             ),
@@ -119,7 +121,7 @@ class TechNewsListScreen extends StatelessWidget {
                       ],
                     );
                   }),
-                  childCount: newsController.techNewsList.length,
+                  childCount: TechController.TechNewsList.length,
                 ),
               );
       }),

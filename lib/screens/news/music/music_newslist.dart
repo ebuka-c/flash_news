@@ -1,16 +1,16 @@
 import 'package:flash_news/controllers/generalnews_controller.dart';
+import 'package:flash_news/screens/news/music/music_newsdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controllers/musicnews_controller.dart';
 import '../../../widgets/news_list_widget.dart';
 import '../../../widgets/our_button.dart';
-import 'music_newsdetails.dart';
 
 class MusicNewsListScreen extends StatelessWidget {
   MusicNewsListScreen({Key? key}) : super(key: key);
 
-  MusicNewsController newsController = Get.find<MusicNewsController>();
+  MusicNewsController MusicController = Get.find<MusicNewsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +20,17 @@ class MusicNewsListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Obx(() {
-        return newsController.stillFetching.value
+        return MusicController.stillFeatching.value
             ? const Center(child: CircularProgressIndicator())
             : NewsListWidget(
-                appBarTitleText: 'General News',
-                titleText: newsController.musicNewsList[0]
+                appBarTitleText: 'Music News',
+                titleText: MusicController.MusicNewsList[0]
                     .title!, //"The world's higest paid footballers and managers in 2020 have been named-GIVEMESPORT",
-                headerImage: newsController.musicNewsList[0]
+                headerImage: MusicController.MusicNewsList[0]
                     .urlToImage!, //'assets/images/economy.jpg',
                 sliverDelegate: SliverChildBuilderDelegate(
                   ((context, index) {
-                    var generalNews = newsController.musicNewsList[index];
+                    var generalNews = MusicController.MusicNewsList[index];
 
                     return Column(
                       children: [
@@ -88,7 +88,7 @@ class MusicNewsListScreen extends StatelessWidget {
                                             child: Row(
                                               children: [
                                                 OurButton(
-                                                  text: 'GENERAL',
+                                                  text: 'MUSIC',
                                                   height: h * 0.047,
                                                   width: w * 0.3,
                                                   radius: h * 0.009,
@@ -101,7 +101,8 @@ class MusicNewsListScreen extends StatelessWidget {
                                                   generalNews
                                                       .publishedAt!, //'08 February',
                                                   style: TextStyle(
-                                                      color: Colors.grey),
+                                                      color: Colors.grey,
+                                                      fontSize: h * 0.017),
                                                 )
                                               ],
                                             ),
@@ -120,7 +121,7 @@ class MusicNewsListScreen extends StatelessWidget {
                       ],
                     );
                   }),
-                  childCount: newsController.musicNewsList.length,
+                  childCount: MusicController.MusicNewsList.length,
                 ),
               );
       }),

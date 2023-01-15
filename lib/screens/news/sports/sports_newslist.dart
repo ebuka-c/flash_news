@@ -10,7 +10,7 @@ import '../../../widgets/our_button.dart';
 class SportsNewsListScreen extends StatelessWidget {
   SportsNewsListScreen({Key? key}) : super(key: key);
 
-  SportsNewsController newsController = Get.find<SportsNewsController>();
+  SportsNewsController SportsController = Get.find<SportsNewsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +20,17 @@ class SportsNewsListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Obx(() {
-        return newsController.stillFetching.value
+        return SportsController.stillFeatching.value
             ? const Center(child: CircularProgressIndicator())
             : NewsListWidget(
-                appBarTitleText: 'General News',
-                titleText: newsController.sportNewsList[0]
+                appBarTitleText: 'Sports News',
+                titleText: SportsController.SportsNewsList[0]
                     .title!, //"The world's higest paid footballers and managers in 2020 have been named-GIVEMESPORT",
-                headerImage: newsController.sportNewsList[0]
+                headerImage: SportsController.SportsNewsList[0]
                     .urlToImage!, //'assets/images/economy.jpg',
                 sliverDelegate: SliverChildBuilderDelegate(
                   ((context, index) {
-                    var generalNews = newsController.sportNewsList[index];
+                    var generalNews = SportsController.SportsNewsList[index];
 
                     return Column(
                       children: [
@@ -88,7 +88,7 @@ class SportsNewsListScreen extends StatelessWidget {
                                             child: Row(
                                               children: [
                                                 OurButton(
-                                                  text: 'GENERAL',
+                                                  text: 'SPORTS',
                                                   height: h * 0.047,
                                                   width: w * 0.3,
                                                   radius: h * 0.009,
@@ -101,7 +101,8 @@ class SportsNewsListScreen extends StatelessWidget {
                                                   generalNews
                                                       .publishedAt!, //'08 February',
                                                   style: TextStyle(
-                                                      color: Colors.grey),
+                                                      color: Colors.grey,
+                                                      fontSize: h * 0.017),
                                                 )
                                               ],
                                             ),
@@ -120,7 +121,7 @@ class SportsNewsListScreen extends StatelessWidget {
                       ],
                     );
                   }),
-                  childCount: newsController.sportNewsList.length,
+                  childCount: SportsController.SportsNewsList.length,
                 ),
               );
       }),

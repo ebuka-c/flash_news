@@ -2,6 +2,7 @@ import 'package:flash_news/controllers/generalnews_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../controllers/artnews_controller.dart';
 import '../../../widgets/news_list_widget.dart';
 import '../../../widgets/our_button.dart';
 import 'art_news_details.dart';
@@ -9,7 +10,7 @@ import 'art_news_details.dart';
 class ArtNewsListScreen extends StatelessWidget {
   ArtNewsListScreen({Key? key}) : super(key: key);
 
-  GeneralNewsController newsController = Get.find<GeneralNewsController>();
+  ArtNewsController ArtController = Get.find<ArtNewsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +20,17 @@ class ArtNewsListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Obx(() {
-        return newsController.stillFetching.value
+        return ArtController.stillFeatching.value
             ? const Center(child: CircularProgressIndicator())
             : NewsListWidget(
-                appBarTitleText: 'General News',
-                titleText: newsController.generalNewsList[0]
+                appBarTitleText: 'Art News',
+                titleText: ArtController.ArtNewsList[0]
                     .title!, //"The world's higest paid footballers and managers in 2020 have been named-GIVEMESPORT",
-                headerImage: newsController.generalNewsList[0]
-                    .urlToImage!, //'assets/images/economy.jpg',
+                headerImage: ArtController
+                    .ArtNewsList[0].urlToImage!, //'assets/images/economy.jpg',
                 sliverDelegate: SliverChildBuilderDelegate(
                   ((context, index) {
-                    var generalNews = newsController.generalNewsList[index];
+                    var generalNews = ArtController.ArtNewsList[index];
 
                     return Column(
                       children: [
@@ -87,7 +88,7 @@ class ArtNewsListScreen extends StatelessWidget {
                                             child: Row(
                                               children: [
                                                 OurButton(
-                                                  text: 'GENERAL',
+                                                  text: 'ART',
                                                   height: h * 0.047,
                                                   width: w * 0.3,
                                                   radius: h * 0.009,
@@ -100,7 +101,8 @@ class ArtNewsListScreen extends StatelessWidget {
                                                   generalNews
                                                       .publishedAt!, //'08 February',
                                                   style: TextStyle(
-                                                      color: Colors.grey),
+                                                      color: Colors.grey,
+                                                      fontSize: h * 0.017),
                                                 )
                                               ],
                                             ),
@@ -119,7 +121,7 @@ class ArtNewsListScreen extends StatelessWidget {
                       ],
                     );
                   }),
-                  childCount: newsController.generalNewsList.length,
+                  childCount: ArtController.ArtNewsList.length,
                 ),
               );
       }),
